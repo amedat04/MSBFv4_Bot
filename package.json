@@ -1,0 +1,15 @@
+{
+  "name": "testBot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "dependencies": {
+    "botbuilder": "^4.5.0",
+    "botbuilder-ai": "^4.5.0",
+    "botbuilder-dialogs": "^4.5.0",
+    "dotenv": "^8.0.0",
+    "restify": "^8.3.3"
+  }
+}
