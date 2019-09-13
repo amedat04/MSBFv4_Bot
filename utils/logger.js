@@ -1,4 +1,5 @@
 var fs = require('fs');
+//make sure you have created logs folder
 
 function formatDate(date) {
     var monthNames = [
