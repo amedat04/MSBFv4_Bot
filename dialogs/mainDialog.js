@@ -3,26 +3,28 @@ const { LuisRecognizer } = require('botbuilder-ai');
 
 const MAIN_DIALOG = 'MAIN_DIALOG';
 
-const { CancelAndHelpDialog}= require('./CancelAndHelpDialog')
-const { GreetingDialog,GREETING_DIALOG } = require('./greetingDialog');
-const { ThanksDialog,THANKS_DIALOG}=require('./thanksDialog');
-const { ByeDialog,BYE_DIALOG}=require('./byeDialog');
+const { CancelAndHelpDialog } = require('./CancelAndHelpDialog')
+const { GreetingDialog, GREETING_DIALOG } = require('./greetingDialog');
+const { ThanksDialog, THANKS_DIALOG } = require('./thanksDialog');
+const { ByeDialog, BYE_DIALOG } = require('./byeDialog');
+
 
 const luisRecognizer = new LuisRecognizer({
     applicationId: "",
     endpointKey: "",
-    endpoint: ``
-},{}, true);
+    // endpoint: ``
+}, {}, true);
 
 
-class MainDialog extends CancelAndHelpDialog{
-    constructor(){
+
+class MainDialog extends CancelAndHelpDialog {
+    constructor() {
         super('mainDialog');
-  }
+    }
 
     async run(turnContext, accessor) {
         const dialogSet = new DialogSet(accessor);
-        
+
         //add all the dialogs to dialog stack, so that we can route the dialogs from dialog stack
         dialogSet.add(this);
         dialogSet.add(new GreetingDialog(GREETING_DIALOG));
@@ -47,8 +49,9 @@ class MainDialog extends CancelAndHelpDialog{
                 case 'Bye':
                     await dialogContext.beginDialog(BYE_DIALOG);
                     break;
-                default: await turnContext.sendActivity('Deafult message');
-                break;
+                default:
+                    await turnContext.sendActivity('Deafult message');
+                    break;
             }
         }
 
@@ -58,4 +61,4 @@ class MainDialog extends CancelAndHelpDialog{
 
 
 module.exports.MainDialog = MainDialog;
-module.exports.MAIN_DIALOG = MAIN_DIALOG;
+module.exports.MAIN_DIALOG = MAIN_DIALOG;;
